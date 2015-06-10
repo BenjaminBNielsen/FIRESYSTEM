@@ -1,0 +1,132 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+.root{
+    -fx-background-color: #EEE;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-font-family: Calibri;
+    -fx-text-fill: #333333;
+    -fx-padding: 3px 35px 0 3px;
+}
+
+.button {
+    -fx-margin: 15px;
+    -fx-background-color: linear-gradient(#FFF, #DDD);
+    -fx-border-style: solid;
+    -fx-border-color: #CCC;
+    -fx-border-radius: 0;
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(#DDD, #FFF);
+}
+
+.button:pressed{
+    -fx-background-color: linear-gradient(#BBB, #DDD);
+}
+
+.hbox {
+    -fx-spacing: 3px;
+}
+
+.browser-button{
+    -fx-graphic: url('BrowserButton.png');
+}
+
+.dropdb-button{
+    -fx-graphic: url('DropDBButton.png');
+}
+
+.config-button{
+    -fx-padding: 6px;
+    -fx-graphic: url('ConfigButton.png');
+}
+
+.header {
+    -fx-background-color: linear-gradient(#EEE, #FFF);
+    -fx-padding: 15px 5px 15px 5px;
+    -fx-border-color: #CCC;
+    -fx-border-width: 1px;
+}
+
+.header .label{
+    -fx-font-size: 28px;
+    -fx-font-family: Calibri;
+    -fx-text-fill: #333333;
+    -fx-padding: 0 0 0 3px;
+}
+
+.list-item{
+    -fx-background-color: linear-gradient(#FFF, #EEE);
+    -fx-padding: 5px;
+    -fx-border-color: #CCC;
+    -fx-border-width: 1px;
+    -fx-font-size: 16px;
+    -fx-font-family: Calibri;
+    -fx-text-fill: #333333;
+}
+
+.list-item .button{
+    -fx-background-color: transparent;
+}
+
+.list-item .button:hover{
+    -fx-background-color: linear-gradient(#DDD, #FFF);
+}
+
+.list-item .button:pressed {
+    -fx-background-color: linear-gradient(#BBB, #DDD);
+}
+
+.toggle-button {
+    -fx-margin: 15px;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-color: #CCC;
+    -fx-border-radius: 0;
+    -fx-background-clip: content-box;
+}
+
+.list-item .toggle-button{
+    -fx-background-color: linear-gradient(#55AA55, #88CC88);
+}
+.list-item .toggle-button:hover{
+    -fx-background-color: linear-gradient(#88CC88, #55AA55);
+}
+.list-item .toggle-button:selected {
+    -fx-background-color: linear-gradient(#D18484, #830505);
+}
+.scroll-pane {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.popup-vbox {
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+}
+
+.popup-vbox .label{
+    -fx-padding: 0;
+}
+
+.text-field{
+    -fx-font-size: 20px;
+    -fx-font-family: Calibri;
+    -fx-text-fill: #777;
+    -fx-prompt-text-fill: #777;
+    -fx-highlight-fill: #777;
+    -fx-highlight-text-fill: #FFF;
+    -fx-border-style: solid;
+    -fx-border-color: #CCC;
+    -fx-border-radius: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
