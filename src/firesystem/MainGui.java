@@ -89,7 +89,7 @@ public class MainGui extends Application {
         } catch (UnknownHostException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
-            new ExceptionPopup(e.getMessage());
+            new ExceptionPopup("Der kunne ikke oprettes forbindelse til mongodb. Mongodb gav følgende fejlbesked: ", e.getMessage());
             System.exit(0);
         }
 

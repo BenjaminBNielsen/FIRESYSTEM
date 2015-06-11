@@ -13,10 +13,11 @@ import javafx.stage.Stage;
 public class ExceptionPopup extends Stage {
 
     private Image icon = new Image(getClass().getResourceAsStream("/firesystem/ErrorIcon.png"));
+    private Label initMessage = new Label();
     private Label errorMessage = new Label();
     private Button okButton = new Button("Okay");
 
-    public ExceptionPopup(String text) {
+    public ExceptionPopup(String initMessage, String errorMessage) {
         VBox root = new VBox();
         root.getStyleClass().add("popup-vbox");
         initNodes(root);
@@ -28,7 +29,7 @@ public class ExceptionPopup extends Stage {
         this.getIcons().add(icon);
         scene.getStylesheets().add("firesystem/style.css");
 
-        display(text);
+        display(initMessage,errorMessage);
     }
 
     public void initNodes(VBox root) {
@@ -37,13 +38,19 @@ public class ExceptionPopup extends Stage {
         });
         okButton.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(okButton, Priority.ALWAYS);
+        initMessage.setPrefWidth(400);
+        initMessage.setWrapText(true);
+        
         errorMessage.setPrefWidth(400);
+        errorMessage.getStyleClass().add("error-label");
         errorMessage.setWrapText(true);
-        root.getChildren().addAll(errorMessage, okButton);
+        
+        root.getChildren().addAll(initMessage, errorMessage, okButton);
     }
 
-    public void display(String text) {
-        errorMessage.setText(text);
+    public void display(String sInitMessage, String sErrorMessage) {
+        initMessage.setText(sInitMessage);
+        errorMessage.setText(sErrorMessage);
         this.showAndWait();
     }
 }

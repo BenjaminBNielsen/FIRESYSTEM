@@ -92,7 +92,6 @@ public class FireSensor extends Thread {
                     temperatureCollection.insert(new BasicDBObject("temperature", temperature).append("humidity", humidity));
 
                     //Send temperature to server
-//                    System.out.println(name + " temperature: " + temperature + " humidity: " + humidity);
                     String temperatureJson = "{\"name\":\"sensor-" + number + "\",\"temperature\":" + temperature + ",\"humidity\":" + humidity
                             + ",\"mobile\":\"" + mobile + "\",\"email\":\"" + email + "\"}";
 

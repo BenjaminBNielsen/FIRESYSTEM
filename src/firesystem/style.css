@@ -130,3 +130,7 @@ and open the template in the editor.
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
+
+.error-label {
+    -fx-text-fill: #CC0000;
+}
