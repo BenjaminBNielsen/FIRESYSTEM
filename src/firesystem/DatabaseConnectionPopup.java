@@ -37,6 +37,9 @@ public class DatabaseConnectionPopup extends ConnectionPopup {
         this.setScene(scene);
         this.getIcons().add(icon);
         scene.getStylesheets().add("firesystem/style.css");
+        
+        this.setOnCloseRequest(e -> {System.exit(0);});
+        
         display();
     }
 

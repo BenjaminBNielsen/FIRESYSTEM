@@ -36,10 +36,12 @@ public class MainGui extends Application {
     private final Image icon = new Image(getClass().getResourceAsStream("/firesystem/FireSystemIcon.png"));
     
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
+    public void start(Stage primaryStage) {
+        try{
         databaseConnectionPopup = new DatabaseConnectionPopup();
         websitePopup = new ApiConnectionPopup();
-        initSensors();
+        
+        initSensors(primaryStage);
 
         VBox root = new VBox();
 
@@ -52,10 +54,14 @@ public class MainGui extends Application {
         primaryStage.getIcons().add(icon);
         scene.getStylesheets().add("firesystem/style.css");
         primaryStage.show();
+        }catch(FileNotFoundException ex){
+            System.out.println(ex.getMessage());
+            primaryStage.close();
+        }
 
     }
 
-    public FireSensor[] getSensors() {
+    public FireSensor[] getSensors(Stage primaryStage) {
         FireSensor[] sensors = new FireSensor[13];
         try {
 
@@ -83,6 +89,8 @@ public class MainGui extends Application {
         } catch (UnknownHostException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
+            new ExceptionPopup(e.getMessage());
+            System.exit(0);
         }
 
         return sensors;
@@ -95,8 +103,8 @@ public class MainGui extends Application {
         launch(args);
     }
 
-    private void initSensors() {
-        sensors = getSensors();
+    private void initSensors(Stage primaryStage) {
+        sensors = getSensors(primaryStage);
 
         for (int i = 0; i < sensors.length; i++) {
             sensors[i].setEnabled(true);
