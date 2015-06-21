@@ -65,7 +65,7 @@ public class FireSensor extends Thread {
 
                     //Get relevant connections
                     users = db.getCollection("users");
-                    temperatureCollection = db.getCollection("temperatures");
+                    temperatureCollection = db.getCollection(DatabaseConnectionPopup.getCollectionName());
 
                     //Find my document in the users collection
                     DBObject ME = findDocumentById(jsonId, users);

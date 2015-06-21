@@ -34,7 +34,7 @@ public class DialogBox extends Stage {
             db = host.getDB(DatabaseConnectionPopup.getsDbname());
 
             //Get relevant connections
-            temperatures = db.getCollection("temperatures");
+            temperatures = db.getCollection(DatabaseConnectionPopup.getCollectionName());
         } catch (UnknownHostException ex) {
             System.out.println(ex.getMessage());
         }

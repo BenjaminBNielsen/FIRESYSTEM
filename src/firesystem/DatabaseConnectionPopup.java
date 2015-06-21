@@ -20,11 +20,11 @@ import javafx.scene.layout.VBox;
 
 public class DatabaseConnectionPopup extends ConnectionPopup {
 
-    private TextField hostnameInput, dbnameInput;
-    private Label hostname, dbname;
+    private TextField hostnameInput, dbnameInput, collectionInput;
+    private Label hostname, dbname, collection;
     private Button okButton;
     private Image icon = new Image(getClass().getResourceAsStream("/firesystem/mongoDBicon.png"));
-    private static String sHostName, sDbname;
+    private static String sHostName, sDbname, sCollectionName;
 
     public DatabaseConnectionPopup() throws FileNotFoundException {
         VBox root = new VBox();
@@ -49,6 +49,8 @@ public class DatabaseConnectionPopup extends ConnectionPopup {
         hostname = new Label("Hostname");
         hostname.getStyleClass().add("label");
         dbname = new Label("Databasename");
+        collection = new Label("Collection");
+        collectionInput = new TextField("Collection");
         readDbInfo();
 
         okButton = new Button("Connect");
@@ -61,6 +63,7 @@ public class DatabaseConnectionPopup extends ConnectionPopup {
             try {
                 sHostName = hostnameInput.getText();
                 sDbname = dbnameInput.getText();
+                sCollectionName = collectionInput.getText();
                 FileHandler.writeFile("src/firesystem/dbSetup.txt", setDbInfo());
                 this.close();
             } catch (IOException ex) {
@@ -69,21 +72,8 @@ public class DatabaseConnectionPopup extends ConnectionPopup {
         });
         okButton.setDefaultButton(true);
 
-//        okButton.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            
-//        @Override
-//        public void handle(ActionEvent event) {
-//
-//            if (event.getEventType().equals(ActionEvent.ACTION)) {
-//                try {
-//                    FileHandler.writeFile("dbSetup.txt", setDbInfo());
-//                } catch (IOException ex) {
-//                    Logger.getLogger(DatabaseConnectionPopup.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }     
-//        });
-        root.getChildren().addAll(hostname, hostnameInput, dbname, dbnameInput, okButton);
+
+        root.getChildren().addAll(hostname, hostnameInput, dbname, dbnameInput, collection, collectionInput, okButton);
     }
 
     public static String getsHostName() {
@@ -101,6 +91,14 @@ public class DatabaseConnectionPopup extends ConnectionPopup {
     public static void setsDbname(String name) {
         sDbname = name;
     }
+    
+    public static String getCollectionName(){
+        return sCollectionName;
+    }
+    
+    public static void setsCollectionName(String collection){
+        sCollectionName = collection;
+    }
         
     public void readDbInfo() throws FileNotFoundException{
         ArrayList<String> fh = FileHandler.readFile("src/firesystem/dbSetup.txt");
@@ -108,13 +106,15 @@ public class DatabaseConnectionPopup extends ConnectionPopup {
         if(fh.size() > 0) {
         hostnameInput.setText(fh.get(0));
         dbnameInput.setText(fh.get(1));
+        collectionInput.setText(fh.get(2));
         }       
     }
     
     public String[] setDbInfo(){
-        String[] lineArr = new String[2];
+        String[] lineArr = new String[3];
         lineArr[0] = hostnameInput.getText();
         lineArr[1] = dbnameInput.getText();
+        lineArr[2] = collectionInput.getText();
         
         return lineArr;
     }
